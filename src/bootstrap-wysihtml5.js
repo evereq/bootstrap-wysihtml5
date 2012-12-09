@@ -13,7 +13,7 @@
                 wysi.dom.replaceWithChildNodes(pre);
                 if (codeSelector) {
                     wysi.dom.replaceWithChildNodes(pre);
-                    hljs.highlightBlock(pre);
+                    hljs.highlightBlock(codeSelector);
                 }
             });
         } else {
@@ -25,12 +25,12 @@
 
             var selectedNodes = range.extractContents(),
                 preElem = composer.doc.createElement("pre"),
-                code = composer.doc.createElement("code");
+                codeElem = composer.doc.createElement("code");
             
-            preElem.appendChild(code);
-            code.appendChild(selectedNodes);
+            preElem.appendChild(codeElem);
+            codeElem.appendChild(selectedNodes);
             range.insertNode(preElem);
-            hljs.highlightBlock(preElem);
+            hljs.highlightBlock(codeElem);
             composer.selection.selectNode(preElem);
             
         }
